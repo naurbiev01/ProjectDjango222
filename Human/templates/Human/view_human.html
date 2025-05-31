@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+
+
+{% block title  %}
+{{ title }} :: {{ block.super }}
+{% endblock %}
+
+{% block sidebar %}
+{% include 'inc/sidebar.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="col-md-8">
+            <div class="card mb-3" style="width: 900px;">
+                {{ forloop.counter }}
+            <div class="card-header">
+              Категория : <a href="{{ humans_item.category.get_absolute_url }}"> {{ humans_item.category }}</a>
+             </div>
+                    <div class="card-body">
+                        {% if item.photo %}
+                        <img src="{{ humans_item.photo.url }}"
+                        class="mr-3" width="350" alt="Photo" height="400" style="margin-left: 400px;">
+                        {% else %}
+                        <h6> Фото нет </h6>
+                        {% endif %}
+                    </div>
+                        <h5 class="card-title {% cycle 'text-success' 'text-danger' 'text-primary' %}" style="margin-right: 700px;">{{ humans_item.title }}</h5>
+                 {% autoescape off %}
+                <div class="content" style="margin-left: 50px;">
+                    <p class="card-text">{{ humans_item.content|linebreaks }}</p>
+                </div>
+                 {% endautoescape %}
+             <div class="card-footer text-muted">
+                  {{ humans_item.created_at|date:'Y-m-d H;i' }}
+             </div>
+                </div>
+            </div>
+      </div>
+{% endblock %}{
