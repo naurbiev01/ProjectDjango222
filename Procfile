@@ -1,4 +1,6 @@
-web: gunicorn NewProject.wsgi --log-file -
+web: gunicorn NewProject.wsgi
+
+
 
 
 
