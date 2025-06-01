@@ -1,2 +1,4 @@
-web: gunicorn ProjectDjango222.wsgi --log-file -
+web: gunicorn NewProject.wsgi --log-file -
+
+
 
